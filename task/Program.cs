@@ -2,20 +2,6 @@
 
 internal class Program
 {
-    private static string ReadFilePath(string message)
-    {
-        while (true)
-        {
-            Console.Write(message);
-            string path = Console.ReadLine();
-            if (path != null && File.Exists(path))
-            {
-                return path;
-            }
-            Console.WriteLine("Файл не найден. Повторите ввод.");
-        }
-    }
-
     static void Main(string[] args)
     {
         while (true)
@@ -53,7 +39,7 @@ internal class Program
                     Console.WriteLine($"Количество чётных элементов: {Task1_5.CountEvenElements(file2)}");
                     break;
                 case 3:
-                    string file3Source = ReadFilePath("Введите путь к исходному файлу: ");
+                    string file3Source = HelpConsole.ReadFilePath("Введите путь к исходному файлу: ");
                     string file3Dest = "task3_result.txt";
                     Console.Write("Введите комбинацию символов для поиска: ");
                     string substring = Console.ReadLine() ?? "";
@@ -140,11 +126,11 @@ internal class Program
                     Task6_10.AnalyzeFurnitureShops(purchases, allFactories);
                     break;
                 case 9:
-                    string file9 = ReadFilePath("Введите путь к текстовому файлу: ");
+                    string file9 = HelpConsole.ReadFilePath("Введите путь к текстовому файлу: ");
                     Task6_10.PrintDeafConsonantsInOddNotEven(file9);
                     break;
                 case 10:
-                    string file10 = ReadFilePath("Введите путь к файлу с данными о сметане: ");
+                    string file10 = HelpConsole.ReadFilePath("Введите путь к файлу с данными о сметане: ");
                     Task6_10.AnalyzeSourCreamPrices(file10);
                     break;
                 default:
