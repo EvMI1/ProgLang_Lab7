@@ -153,7 +153,7 @@ internal class Task1_5
         }
     }
 
-    private static int FindMinElement(string fileName)
+    public static int FindMinElementBinary(string fileName)
     {
         int min = int.MaxValue;
         using (FileStream f = new FileStream(fileName, FileMode.Open))
@@ -188,7 +188,7 @@ internal class Task1_5
         Console.WriteLine();
     }
 
-    private static int FindMaxElementBinary(string fileName)
+    public static int FindMaxElementBinary(string fileName)
     {
         int max = int.MinValue;
         using (FileStream f = new FileStream(fileName, FileMode.Open))
@@ -208,27 +208,7 @@ internal class Task1_5
 
     public static int GetMaxMinDifference(string fileName)
     {
-        using (FileStream f = new FileStream(fileName, FileMode.Open))
-        using (BinaryReader reader = new BinaryReader(f))
-        {
-            if (f.Length == 0)
-            {
-                Console.WriteLine("Предупреждение: файл пустой.");
-                return 0;
-            }
-
-            int max = reader.ReadInt32();
-            int min = max;
-
-            while (f.Position < f.Length)
-            {
-                int num = reader.ReadInt32();
-                if (num > max) max = num;
-                if (num < min) min = num;
-            }
-
-            return max - min;
-        }
+        return FindMaxElementBinary(fileName) - FindMinElementBinary(fileName);
     }
 
     // Задание 5.

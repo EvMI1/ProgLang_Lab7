@@ -70,6 +70,7 @@ internal class Program
                     }
                     Task1_5.FillBinaryFile(file4, count4);
                     Task1_5.PrintBinaryFile(file4);
+                    Console.WriteLine($"Max = {Task1_5.FindMaxElementBinary(file4)}\tMin={Task1_5.FindMinElementBinary(file4)}");
                     Console.WriteLine($"Файл заполнен. Разность максимального и минимального: {Task1_5.GetMaxMinDifference(file4)}");
                     break;
                 case 5:
