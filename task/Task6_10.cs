@@ -84,7 +84,7 @@ internal class Task6_10
         string[] words;
         using (StreamReader file = new StreamReader(fileName))
         {
-            string? content = file.ReadToEnd();
+            string content = file.ReadToEnd();
             words = content.ToLower().Split(
                 new char[] { ' ', '\n', '\r', '\t', '.', ',', '!', '?', ':', ';', '-' },
                 StringSplitOptions.RemoveEmptyEntries
