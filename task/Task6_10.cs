@@ -1,6 +1,6 @@
 internal class Task6_10
 {
-    // Задание 6, вариант 7
+    // Задание 6.
     public static void MoveFirstToEnd(List<int> list)
     {
         if (list.Count == 0)
@@ -12,7 +12,7 @@ internal class Task6_10
         list.Add(first);
     }
 
-    // Задание 7, вариант 7
+    // Задание 7.
     public static void RemoveEqualNeighbours(LinkedList<int> list)
     {
         if (list.Count < 2)
@@ -37,7 +37,7 @@ internal class Task6_10
         }
     }
 
-    // Задание 8, вариант 7
+    // Задание 8.
     public static void AnalyzeFurnitureShops(List<HashSet<string>> purchases, HashSet<string> allFactories)
     {
         HashSet<string> byAll = new HashSet<string>(allFactories);
@@ -73,18 +73,18 @@ internal class Task6_10
         }
     }
 
-    // Задание 9, вариант 7
+    // Задание 9.
     public static void PrintDeafConsonantsInOddNotEven(string fileName)
     {
         HashSet<char> deafConsonants = new HashSet<char>
-        {
-            'п', 'ф', 'к', 'т', 'ш', 'с', 'х', 'ч', 'щ', 'ц'
-        };
+    {
+        'п', 'ф', 'к', 'т', 'ш', 'с', 'х', 'ч', 'щ', 'ц'
+    };
 
         string[] words;
         using (StreamReader file = new StreamReader(fileName))
         {
-            string content = file.ReadToEnd();
+            string? content = file.ReadToEnd();
             words = content.ToLower().Split(
                 new char[] { ' ', '\n', '\r', '\t', '.', ',', '!', '?', ':', ';', '-' },
                 StringSplitOptions.RemoveEmptyEntries
@@ -137,7 +137,7 @@ internal class Task6_10
         }
     }
 
-    // Задание 10, вариант 7
+    // Задание 10.
     public static void AnalyzeSourCreamPrices(string fileName)
     {
         Dictionary<int, int> minPrices = new Dictionary<int, int>();

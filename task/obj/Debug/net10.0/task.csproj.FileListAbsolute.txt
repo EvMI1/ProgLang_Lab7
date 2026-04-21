@@ -12,3 +12,4 @@
 /Users/evm1t/ProgLang/lab7/ProgLang_Lab7/task/obj/Debug/net10.0/task.pdb
 /Users/evm1t/ProgLang/lab7/ProgLang_Lab7/task/obj/Debug/net10.0/task.genruntimeconfig.cache
 /Users/evm1t/ProgLang/lab7/ProgLang_Lab7/task/obj/Debug/net10.0/ref/task.dll
+/Users/evm1t/ProgLang/lab7/ProgLang_Lab7/task/obj/Debug/net10.0/task.sourcelink.json

@@ -10,7 +10,7 @@ public struct Toy
 
 internal class Task1_5
 {
-    // Задание 1, вариант 7
+    // Задание 1.
     public static void FillFile(string fileName, int count)
     {
         Random random = new Random();
@@ -70,7 +70,7 @@ internal class Task1_5
         return count;
     }
 
-    // Задание 2, вариант 7
+    // Задание 2.
     public static void FillFile2(string fileName, int rowCount, int colCount)
     {
         Random random = new Random();
@@ -122,7 +122,7 @@ internal class Task1_5
         return count;
     }
 
-    // Задание 3, вариант 7
+    // Задание 3.
     public static void CopyLinesWithSubstring(string sourceFileName, string destFileName, string substring)
     {
         using (StreamReader source = new StreamReader(sourceFileName))
@@ -139,7 +139,7 @@ internal class Task1_5
         }
     }
 
-    // Задание 4, вариант 7
+    // Задание 4.
     public static void FillBinaryFile(string fileName, int count)
     {
         Random random = new Random();
@@ -171,6 +171,23 @@ internal class Task1_5
         return min;
     }
 
+    public static void PrintBinaryFile(string fileName)
+    {
+        using (FileStream f = new FileStream(fileName, FileMode.Open))
+        using (BinaryReader file = new BinaryReader(f))
+        {
+            while (file.BaseStream.Position < file.BaseStream.Length)
+            {
+                Console.Write(file.ReadInt32());
+                if (file.BaseStream.Position < file.BaseStream.Length)
+                {
+                    Console.Write(", ");
+                }
+            }
+        }
+        Console.WriteLine();
+    }
+
     private static int FindMaxElementBinary(string fileName)
     {
         int max = int.MinValue;
@@ -197,7 +214,7 @@ internal class Task1_5
             if (f.Length == 0)
             {
                 Console.WriteLine("Предупреждение: файл пустой.");
-                return 0;                    
+                return 0;
             }
 
             int max = reader.ReadInt32();
@@ -214,6 +231,7 @@ internal class Task1_5
         }
     }
 
+    // Задание 5.
     public static void FillToysFile(string fileName)
     {
         List<Toy> toys = new List<Toy>();
