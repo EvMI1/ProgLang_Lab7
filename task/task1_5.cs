@@ -158,6 +158,10 @@ internal class Task1_5
     // Задание 4.
     public static void FillBinaryFile(string fileName, int count)
     {
+        if (!File.Exists(fileName))
+        {
+            throw new FileNotFoundException($"Файл не найден: {fileName}");
+        }
         Random random = new Random();
         using (FileStream f = new FileStream(fileName, FileMode.Create))
         using (BinaryWriter file = new BinaryWriter(f))
@@ -269,6 +273,10 @@ internal class Task1_5
 
     public static void SaveToysToBinary(string xmlFileName, string binFileName)
     {
+        if (!File.Exists(xmlFileName))
+        {
+            throw new FileNotFoundException($"Файл не найден: {xmlFileName}");
+        }
         XmlSerializer serializer = new XmlSerializer(typeof(List<Toy>));
         List<Toy> toys;
         using (FileStream f = new FileStream(xmlFileName, FileMode.Open))
