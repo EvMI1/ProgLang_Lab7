@@ -235,23 +235,22 @@ internal class Task1_5
     public static void FillToysFile(string fileName)
     {
         List<Toy> toys = new List<Toy>();
-        string[] names = 
+        string[] names =
         {
-            "Кубики",
-            "Конструктор", 
-            "Кукла", 
-            "Мяч",
-            "Машинка", 
-            "Пазл", 
-            "Робот" 
-        };
+        "Кубики",
+        "Конструктор",
+        "Кукла",
+        "Мяч",
+        "Машинка",
+        "Пазл",
+        "Робот"
+    };
         Random random = new Random();
         for (int i = 0; i < 10; i++)
         {
             int ageFrom = random.Next(1, 8);
             int ageTo = ageFrom + random.Next(1, 5);
-            toys.Add(new Toy(names[random.Next(names.Length)],
-             random.Next(100, 2000), ageFrom, ageTo));
+            toys.Add(new Toy(names[random.Next(names.Length)], random.Next(100, 2000), ageFrom, ageTo));
         }
         XmlSerializer serializer = new XmlSerializer(typeof(List<Toy>));
         using (FileStream f = new FileStream(fileName, FileMode.Create))
@@ -260,17 +259,47 @@ internal class Task1_5
         }
     }
 
-    private static List<Toy> ReadToysFile(string fileName)
+    public static void SaveToysToBinary(string xmlFileName, string binFileName)
+    {
+        XmlSerializer serializer = new XmlSerializer(typeof(List<Toy>));
+        List<Toy> toys;
+        using (FileStream f = new FileStream(xmlFileName, FileMode.Open))
+        {
+            toys = (List<Toy>)serializer.Deserialize(f);
+        }
+        using (FileStream f = new FileStream(binFileName, FileMode.Create))
+        using (BinaryWriter file = new BinaryWriter(f))
+        {
+            for (int i = 0; i < toys.Count; i++)
+            {
+                file.Write(toys[i].Name);
+                file.Write(toys[i].Price);
+                file.Write(toys[i].AgeFrom);
+                file.Write(toys[i].AgeTo);
+            }
+        }
+    }
+
+    private static List<Toy> ReadToysFromBinary(string fileName)
     {
         if (!File.Exists(fileName))
         {
             throw new FileNotFoundException($"Файл не найден: {fileName}");
         }
-        XmlSerializer serializer = new XmlSerializer(typeof(List<Toy>));
+        List<Toy> toys = new List<Toy>();
         using (FileStream f = new FileStream(fileName, FileMode.Open))
+        using (BinaryReader file = new BinaryReader(f))
         {
-            return (List<Toy>)serializer.Deserialize(f);
+            while (file.BaseStream.Position < file.BaseStream.Length)
+            {
+                string name = file.ReadString();
+                int price = file.ReadInt32();
+                int ageFrom = file.ReadInt32();
+                int ageTo = file.ReadInt32();
+                toys.Add(new Toy(name, price, ageFrom, ageTo));
+            }
         }
+        return toys;
     }
 
     private static int FindMaxPrice(List<Toy> toys)
@@ -286,12 +315,11 @@ internal class Task1_5
         return max;
     }
 
-    public static List<string> GetMostExpensiveToys(string fileName, int k)
+    public static List<string> GetMostExpensiveToys(string binFileName, int k)
     {
-        List<Toy> toys = ReadToysFile(fileName);
+        List<Toy> toys = ReadToysFromBinary(binFileName);
         int maxPrice = FindMaxPrice(toys);
         List<string> result = new List<string>();
-
         for (int i = 0; i < toys.Count; i++)
         {
             if (maxPrice - toys[i].Price <= k)

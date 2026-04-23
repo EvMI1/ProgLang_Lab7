@@ -55,16 +55,18 @@ internal class Program
                         int count4 = HelpConsole.ReadPositiveInt("Введите количество элементов для заполнения файла: ");
                         Task1_5.FillBinaryFile(file4, count4);
                         Task1_5.PrintBinaryFile(file4);
-                        Console.WriteLine($"Max = {Task1_5.FindMaxElementBinary(file4)}\t" + 
+                        Console.WriteLine($"Max = {Task1_5.FindMaxElementBinary(file4)}\t" +
                         $"Min = {Task1_5.FindMinElementBinary(file4)}");
-                        Console.WriteLine($"Разность максимального и минимального:" + 
+                        Console.WriteLine($"Разность максимального и минимального:" +
                         $"{Task1_5.GetMaxMinDifference(file4)}");
                         break;
                     case 5:
-                        string file5 = "task5.xml";
-                        Task1_5.FillToysFile(file5);
-                        int k = HelpConsole.ReadInt("Введите допустимое отклонение: ");
-                        List<string> expensiveToys = Task1_5.GetMostExpensiveToys(file5, k);
+                        string file5xml = "task5.xml";
+                        string file5bin = "task5.bin";
+                        Task1_5.FillToysFile(file5xml);
+                        Task1_5.SaveToysToBinary(file5xml, file5bin);
+                        int k = HelpConsole.ReadInt("Введите допустимое отклонение от максимальной цены (k): ");
+                        List<string> expensiveToys = Task1_5.GetMostExpensiveToys(file5bin, k);
                         Console.WriteLine("Наиболее дорогие игрушки:");
                         for (int i = 0; i < expensiveToys.Count; i++)
                         {
