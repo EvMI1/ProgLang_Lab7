@@ -1,30 +1,30 @@
 internal class Task6_10
 {
     // Задание 6.
-    public static void MoveFirstToEnd(List<int> list)
+    public static void MoveFirstToEnd(List<float> list)
     {
         if (list.Count == 0)
         {
             return;
         }
-        int first = list[0];
+        float first = list[0];
         list.RemoveAt(0);
         list.Add(first);
     }
 
     // Задание 7.
-    public static void RemoveEqualNeighbours(LinkedList<int> list)
+    public static void RemoveEqualNeighbours(LinkedList<float> list)
     {
         if (list.Count < 2)
         {
             return;
         }
-        LinkedListNode<int> current = list.First;
+        LinkedListNode<float> current = list.First;
         while (current != null)
         {
-            LinkedListNode<int> prev = current.Previous ?? list.Last;
-            LinkedListNode<int> next = current.Next ?? list.First;
-            LinkedListNode<int> toRemove = null;
+            LinkedListNode<float> prev = current.Previous ?? list.Last;
+            LinkedListNode<float> next = current.Next ?? list.First;
+            LinkedListNode<float> toRemove = null;
             if (prev.Value == next.Value)
             {
                 toRemove = current;
@@ -64,7 +64,7 @@ internal class Task6_10
     {
         if (set.Count == 0)
         {
-            Console.WriteLine("  (пусто)");
+            Console.WriteLine("(пусто)");
             return;
         }
         foreach (string item in set)
@@ -76,17 +76,21 @@ internal class Task6_10
     // Задание 9.
     public static void PrintDeafConsonantsInOddNotEven(string fileName)
     {
+        if (!File.Exists(fileName))
+        {
+            throw new FileNotFoundException($"Файл не найден: {fileName}");
+        }
         HashSet<char> deafConsonants = new HashSet<char>
-    {
-        'п', 'ф', 'к', 'т', 'ш', 'с', 'х', 'ч', 'щ', 'ц'
-    };
+        {
+            'п', 'ф', 'к', 'т', 'ш', 'с', 'х', 'ч', 'щ', 'ц'
+        };
 
         string[] words;
         using (StreamReader file = new StreamReader(fileName))
         {
             string content = file.ReadToEnd();
             words = content.ToLower().Split(
-                new char[] { ' ', '\n', '\r', '\t', '.', ',', '!', '?', ':', ';', '-' },
+                [' ', '\n', '\r', '\t', '.', ',', '!', '?', ':', ';', '-'],
                 StringSplitOptions.RemoveEmptyEntries
             );
         }
@@ -140,6 +144,10 @@ internal class Task6_10
     // Задание 10.
     public static void AnalyzeSourCreamPrices(string fileName)
     {
+        if (!File.Exists(fileName))
+        {
+            throw new FileNotFoundException($"Файл не найден: {fileName}");
+        }
         Dictionary<int, int> minPrices = new Dictionary<int, int>();
         Dictionary<int, int> minPriceCounts = new Dictionary<int, int>();
 
@@ -182,7 +190,15 @@ internal class Task6_10
 
         for (int i = 0; i < fatTypes.Length; i++)
         {
-            int count = minPrices[fatTypes[i]] == int.MaxValue ? 0 : minPriceCounts[fatTypes[i]];
+            int count;
+            if (minPrices[fatTypes[i]] == int.MaxValue)
+            {
+                count = 0;
+            }
+            else
+            {
+                count = minPriceCounts[fatTypes[i]];
+            }
             Console.Write(count);
             if (i < fatTypes.Length - 1)
             {

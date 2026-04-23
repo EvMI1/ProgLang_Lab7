@@ -38,19 +38,4 @@ internal class HelpConsole
             Console.WriteLine("Ошибка: введите целое число больше 0.");
         }
     }
-
-    public static string ReadFilePath(string message)
-    {
-        while (true)
-        {
-            Console.Write(message);
-            string path = Console.ReadLine();
-            if (path != null && File.Exists(path))
-            {
-                return path;
-            }
-            Console.WriteLine("Файл не найден. Повторите ввод.");
-        }
-    }
-
 }

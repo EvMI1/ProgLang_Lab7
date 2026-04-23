@@ -1,63 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfToy xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Toy>
-    <Name>Машинка</Name>
-    <Price>1872</Price>
-    <AgeFrom>3</AgeFrom>
+    <Name>Мяч</Name>
+    <Price>1758</Price>
+    <AgeFrom>2</AgeFrom>
     <AgeTo>5</AgeTo>
   </Toy>
   <Toy>
-    <Name>Кукла</Name>
-    <Price>1144</Price>
-    <AgeFrom>7</AgeFrom>
-    <AgeTo>8</AgeTo>
-  </Toy>
-  <Toy>
     <Name>Машинка</Name>
-    <Price>1891</Price>
-    <AgeFrom>4</AgeFrom>
-    <AgeTo>7</AgeTo>
-  </Toy>
-  <Toy>
-    <Name>Робот</Name>
-    <Price>1202</Price>
-    <AgeFrom>7</AgeFrom>
-    <AgeTo>10</AgeTo>
-  </Toy>
-  <Toy>
-    <Name>Пазл</Name>
-    <Price>1241</Price>
-    <AgeFrom>3</AgeFrom>
-    <AgeTo>4</AgeTo>
-  </Toy>
-  <Toy>
-    <Name>Машинка</Name>
-    <Price>459</Price>
+    <Price>1591</Price>
     <AgeFrom>5</AgeFrom>
     <AgeTo>9</AgeTo>
   </Toy>
   <Toy>
     <Name>Пазл</Name>
-    <Price>284</Price>
-    <AgeFrom>5</AgeFrom>
-    <AgeTo>6</AgeTo>
-  </Toy>
-  <Toy>
-    <Name>Кубики</Name>
-    <Price>140</Price>
-    <AgeFrom>5</AgeFrom>
-    <AgeTo>8</AgeTo>
-  </Toy>
-  <Toy>
-    <Name>Кукла</Name>
-    <Price>684</Price>
-    <AgeFrom>1</AgeFrom>
+    <Price>1280</Price>
+    <AgeFrom>3</AgeFrom>
     <AgeTo>4</AgeTo>
   </Toy>
   <Toy>
     <Name>Кубики</Name>
-    <Price>1291</Price>
+    <Price>1709</Price>
+    <AgeFrom>2</AgeFrom>
+    <AgeTo>5</AgeTo>
+  </Toy>
+  <Toy>
+    <Name>Кукла</Name>
+    <Price>565</Price>
+    <AgeFrom>4</AgeFrom>
+    <AgeTo>8</AgeTo>
+  </Toy>
+  <Toy>
+    <Name>Кубики</Name>
+    <Price>466</Price>
+    <AgeFrom>2</AgeFrom>
+    <AgeTo>4</AgeTo>
+  </Toy>
+  <Toy>
+    <Name>Робот</Name>
+    <Price>1404</Price>
+    <AgeFrom>3</AgeFrom>
+    <AgeTo>4</AgeTo>
+  </Toy>
+  <Toy>
+    <Name>Кукла</Name>
+    <Price>592</Price>
     <AgeFrom>1</AgeFrom>
-    <AgeTo>3</AgeTo>
+    <AgeTo>4</AgeTo>
+  </Toy>
+  <Toy>
+    <Name>Кукла</Name>
+    <Price>1404</Price>
+    <AgeFrom>3</AgeFrom>
+    <AgeTo>4</AgeTo>
+  </Toy>
+  <Toy>
+    <Name>Пазл</Name>
+    <Price>124</Price>
+    <AgeFrom>3</AgeFrom>
+    <AgeTo>5</AgeTo>
   </Toy>
 </ArrayOfToy>

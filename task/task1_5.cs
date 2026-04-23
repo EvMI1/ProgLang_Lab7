@@ -1,13 +1,5 @@
 using System.Xml.Serialization;
 
-public struct Toy
-{
-    public string Name;
-    public int Price;
-    public int AgeFrom;
-    public int AgeTo;
-}
-
 internal class Task1_5
 {
     // Задание 1.
@@ -25,6 +17,10 @@ internal class Task1_5
 
     public static int FindMaxElement(string fileName)
     {
+        if (!File.Exists(fileName))
+        {
+            throw new FileNotFoundException($"Файл не найден: {fileName}");
+        }
         int max = int.MinValue;
         using (StreamReader file = new StreamReader(fileName))
         {
@@ -48,6 +44,10 @@ internal class Task1_5
 
     public static int CountMax(string fileName)
     {
+        if (!File.Exists(fileName))
+        {
+            throw new FileNotFoundException($"Файл не найден: {fileName}");
+        }
         int max = FindMaxElement(fileName);
         int count = 0;
         using (StreamReader file = new StreamReader(fileName))
@@ -93,6 +93,10 @@ internal class Task1_5
 
     public static int CountEvenElements(string fileName)
     {
+        if (!File.Exists(fileName))
+        {
+            throw new FileNotFoundException($"Файл не найден: {fileName}");
+        }
         int count = 0;
         using (StreamReader file = new StreamReader(fileName))
         {
@@ -125,6 +129,10 @@ internal class Task1_5
     // Задание 3.
     public static void CopyLinesWithSubstring(string sourceFileName, string destFileName, string substring)
     {
+        if (!File.Exists(sourceFileName))
+        {
+            throw new FileNotFoundException($"Файл не найден: {sourceFileName}");
+        }
         using (StreamReader source = new StreamReader(sourceFileName))
         using (StreamWriter dest = new StreamWriter(destFileName))
         {
@@ -155,6 +163,10 @@ internal class Task1_5
 
     public static int FindMinElementBinary(string fileName)
     {
+        if (!File.Exists(fileName))
+        {
+            throw new FileNotFoundException($"Файл не найден: {fileName}");
+        }
         int min = int.MaxValue;
         using (FileStream f = new FileStream(fileName, FileMode.Open))
         using (BinaryReader file = new BinaryReader(f))
@@ -173,6 +185,10 @@ internal class Task1_5
 
     public static void PrintBinaryFile(string fileName)
     {
+        if (!File.Exists(fileName))
+        {
+            throw new FileNotFoundException($"Файл не найден: {fileName}");
+        }
         using (FileStream f = new FileStream(fileName, FileMode.Open))
         using (BinaryReader file = new BinaryReader(f))
         {
@@ -190,6 +206,10 @@ internal class Task1_5
 
     public static int FindMaxElementBinary(string fileName)
     {
+        if (!File.Exists(fileName))
+        {
+            throw new FileNotFoundException($"Файл не найден: {fileName}");
+        }
         int max = int.MinValue;
         using (FileStream f = new FileStream(fileName, FileMode.Open))
         using (BinaryReader file = new BinaryReader(f))
@@ -215,19 +235,24 @@ internal class Task1_5
     public static void FillToysFile(string fileName)
     {
         List<Toy> toys = new List<Toy>();
-        string[] names = { "Кубики", "Конструктор", "Кукла", "Мяч", "Машинка", "Пазл", "Робот" };
+        string[] names = 
+        {
+            "Кубики",
+            "Конструктор", 
+            "Кукла", 
+            "Мяч",
+            "Машинка", 
+            "Пазл", 
+            "Робот" 
+        };
         Random random = new Random();
-
         for (int i = 0; i < 10; i++)
         {
-            Toy toy = new Toy();
-            toy.Name = names[random.Next(names.Length)];
-            toy.Price = random.Next(100, 2000);
-            toy.AgeFrom = random.Next(1, 8);
-            toy.AgeTo = toy.AgeFrom + random.Next(1, 5);
-            toys.Add(toy);
+            int ageFrom = random.Next(1, 8);
+            int ageTo = ageFrom + random.Next(1, 5);
+            toys.Add(new Toy(names[random.Next(names.Length)],
+             random.Next(100, 2000), ageFrom, ageTo));
         }
-
         XmlSerializer serializer = new XmlSerializer(typeof(List<Toy>));
         using (FileStream f = new FileStream(fileName, FileMode.Create))
         {
@@ -237,6 +262,10 @@ internal class Task1_5
 
     private static List<Toy> ReadToysFile(string fileName)
     {
+        if (!File.Exists(fileName))
+        {
+            throw new FileNotFoundException($"Файл не найден: {fileName}");
+        }
         XmlSerializer serializer = new XmlSerializer(typeof(List<Toy>));
         using (FileStream f = new FileStream(fileName, FileMode.Open))
         {
