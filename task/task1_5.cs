@@ -5,6 +5,10 @@ internal class Task1_5
     // Задание 1.
     public static void FillFile(string fileName, int count)
     {
+        if (!File.Exists(fileName))
+        {
+            throw new FileNotFoundException($"Файл не найден: {fileName}");
+        }
         Random random = new Random();
         using (StreamWriter file = new StreamWriter(fileName))
         {
