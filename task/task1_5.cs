@@ -80,6 +80,10 @@ internal class Task1_5
         Random random = new Random();
         using (StreamWriter file = new StreamWriter(fileName))
         {
+            if (!File.Exists(fileName))
+            {
+                throw new FileNotFoundException($"Файл не найден: {fileName}");
+            }
             for (int i = 0; i < rowCount; i++)
             {
                 for (int j = 0; j < colCount; j++)
